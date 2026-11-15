@@ -1,0 +1,154 @@
+[
+  {
+    "id": "e_001",
+    "amount": "100.00",
+    "currency": "USD",
+    "timestamp": "2025-04-01 10:00:00",
+    "status": "completed"
+  },
+  {
+    "id": "e_002",
+    "amount": "abc",
+    "currency": "USD",
+    "timestamp": "2025-04-01 10:05:00",
+    "status": "completed"
+  },
+  {
+    "id": "e_003",
+    "currency": "USD",
+    "timestamp": "2025-04-01 10:10:00",
+    "status": "completed"
+  },
+  {
+    "id": "e_004",
+    "amount": "50.00",
+    "currency": "XYZ",
+    "timestamp": "2025-04-01 10:15:00",
+    "status": "completed"
+  },
+  {
+    "id": "e_005",
+    "amount": "-20.00",
+    "currency": "USD",
+    "timestamp": "2025-04-01 10:20:00",
+    "status": "completed"
+  },
+  {
+    "id": "e_006",
+    "amount": "0",
+    "currency": "EUR",
+    "timestamp": "2025-04-01 10:25:00",
+    "status": "pending"
+  },
+  {
+    "id": "e_007",
+    "amount": "30.00",
+    "currency": "USD",
+    "timestamp": "31/02/2025 10:30",
+    "status": "completed"
+  },
+  {
+    "id": "e_008",
+    "amount": "40.00",
+    "currency": "USD",
+    "timestamp": "2025-04-01 10:35:00",
+    "status": "refunded"
+  },
+  {
+    "id": "e_009",
+    "amount": "60.00",
+    "currency": "EUR",
+    "timestamp": "2025-04-01 10:40:00"
+  },
+  {
+    "id": "e_001",
+    "amount": "15.00",
+    "currency": "USD",
+    "timestamp": "2025-04-01 10:45:00",
+    "status": "completed"
+  },
+  {
+    "transaction_id": 301,
+    "total": 2500,
+    "currency_code": "usd",
+    "created_at": "01/04/2025 11:00",
+    "state": "OK"
+  },
+  {
+    "transaction_id": 302,
+    "total": true,
+    "currency_code": "usd",
+    "created_at": "01/04/2025 11:05",
+    "state": "OK"
+  },
+  {
+    "transaction_id": 303,
+    "total": 1000,
+    "currency_code": "usd",
+    "created_at": 1743500000,
+    "state": "OK"
+  },
+  {
+    "transaction_id": 304,
+    "total": "12.345",
+    "currency_code": "eur",
+    "created_at": "01/04/2025 11:10",
+    "state": "pending"
+  },
+  {
+    "transaction_id": "",
+    "total": 1000,
+    "currency_code": "usd",
+    "created_at": "01/04/2025 11:15",
+    "state": "OK"
+  },
+  {
+    "ref": "A-90",
+    "amount": "99.99",
+    "date": "2025-04-01T12:00:00Z",
+    "result": "success"
+  },
+  {
+    "ref": "A-91",
+    "amount": "$80.00",
+    "date": "2025-04-01T12:05:00Z",
+    "result": "success"
+  },
+  {
+    "ref": "A-92",
+    "amount": "€10,00",
+    "date": "not a date",
+    "result": "success"
+  },
+  {
+    "foo": "bar",
+    "amount": "10.00"
+  },
+  "esto no es un objeto",
+  {
+    "id": "e_010",
+    "transaction_id": 999,
+    "amount": "5.00"
+  },
+  {
+    "id": "e_011",
+    "amount": "€50.00",
+    "currency": "USD",
+    "timestamp": "2025-04-01 13:00:00",
+    "status": "completed"
+  },
+  {
+    "id": "e_012",
+    "amount": "1.234,56",
+    "currency": "EUR",
+    "timestamp": "2025-04-01 13:05:00",
+    "status": "OK"
+  },
+  {
+    "id": "e_013",
+    "amount": "2025",
+    "currency": "USD",
+    "timestamp": "2025-04-02",
+    "status": " Completed "
+  }
+]

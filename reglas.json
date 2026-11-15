@@ -1,0 +1,76 @@
+{
+  "_descripcion": "Reglas de normalizacion y validacion del sistema. La lista 'decisiones' indica quien definio cada regla (ESTUDIANTE o PROPUESTA DE LA IA).",
+
+  "esquema_normalizado": {
+    "campos": ["id", "amount", "currency", "timestamp", "status", "source"],
+    "estados": ["SUCCESS", "FAILED", "PENDING"]
+  },
+
+  "fuentes": {
+    "fuente_A": {
+      "campo_identificador": "id",
+      "campos": { "id": "id", "monto": "amount", "moneda": "currency", "fecha": "timestamp", "estado": "status" },
+      "campos_obligatorios": ["id", "monto", "moneda", "fecha"],
+      "monto_entero_en": "unidades"
+    },
+    "fuente_B": {
+      "campo_identificador": "transaction_id",
+      "campos": { "id": "transaction_id", "monto": "total", "moneda": "currency_code", "fecha": "created_at", "estado": "state" },
+      "campos_obligatorios": ["id", "monto", "moneda", "fecha"],
+      "monto_entero_en": "centavos"
+    },
+    "fuente_C": {
+      "campo_identificador": "ref",
+      "campos": { "id": "ref", "monto": "amount", "moneda": null, "fecha": "date", "estado": "result" },
+      "campos_obligatorios": ["id", "monto", "fecha"],
+      "monto_entero_en": "unidades"
+    }
+  },
+
+  "monedas_soportadas": ["USD", "EUR", "GBP"],
+  "simbolos_moneda": { "$": "USD", "€": "EUR", "£": "GBP" },
+
+  "mapeo_estados": {
+    "SUCCESS": ["completed", "complete", "ok", "success", "succeeded", "approved", "paid"],
+    "FAILED": ["failed", "failure", "error", "declined", "rejected", "cancelled", "canceled"],
+    "PENDING": ["pending", "processing", "waiting", "in_progress"]
+  },
+  "estado_desconocido": "FAILED",
+
+  "formatos_fecha": [
+    "%Y-%m-%dT%H:%M:%S.%f%z",
+    "%Y-%m-%dT%H:%M:%S%z",
+    "%Y-%m-%dT%H:%M:%S",
+    "%Y-%m-%d %H:%M:%S",
+    "%Y-%m-%d %H:%M",
+    "%d/%m/%Y %H:%M:%S",
+    "%d/%m/%Y %H:%M",
+    "%Y-%m-%d",
+    "%d/%m/%Y"
+  ],
+
+  "validacion": {
+    "monto_minimo_exclusivo": "0",
+    "maximo_decimales": 2,
+    "rechazar_ids_duplicados": true
+  },
+
+  "decisiones": [
+    { "regla": "Las transacciones invalidas o incompletas se SEPARAN en una lista aparte, con el motivo, visible en la interfaz", "origen": "ESTUDIANTE" },
+    { "regla": "El monto entero de fuente_B es en CENTAVOS (10050 equivale a 100.50)", "origen": "ESTUDIANTE" },
+    { "regla": "Un estado desconocido o ausente se mapea a FAILED (por seguridad) y se registra un aviso", "origen": "ESTUDIANTE" },
+    { "regla": "Esquema normalizado: los 6 campos del enunciado (id, amount, currency, timestamp, status, source); amount con 2 decimales, timestamp ISO-8601 en UTC", "origen": "PROPUESTA DE LA IA (basada en el enunciado)" },
+    { "regla": "La fuente se detecta por su clave identificadora (id, transaction_id o ref); ninguna o varias claves = invalida", "origen": "PROPUESTA DE LA IA" },
+    { "regla": "Monedas soportadas: USD, EUR y GBP; simbolos $, € y £; el codigo se normaliza a mayusculas", "origen": "PROPUESTA DE LA IA" },
+    { "regla": "En fuente_C la moneda sale del simbolo del monto; sin simbolo es invalida. Si simbolo y codigo se contradicen es invalida", "origen": "PROPUESTA DE LA IA" },
+    { "regla": "El monto debe ser mayor que 0", "origen": "PROPUESTA DE LA IA" },
+    { "regla": "Montos con mas de 2 decimales son invalidos (no se redondea en silencio)", "origen": "PROPUESTA DE LA IA" },
+    { "regla": "Formatos numericos: '99,99' (coma decimal), '1.234,56' y '1,234.56'; un solo punto es decimal; '1,234' se lee como miles", "origen": "PROPUESTA DE LA IA" },
+    { "regla": "Montos enteros en fuente_A y fuente_C son unidades; textos y decimales (float) siempre son unidades", "origen": "PROPUESTA DE LA IA" },
+    { "regla": "Fechas: con barras se lee DIA/MES/AÑO; sin zona horaria se asume UTC; solo fecha = 00:00:00; la salida es ISO-8601 en UTC con Z", "origen": "PROPUESTA DE LA IA" },
+    { "regla": "La fecha es obligatoria; una fecha numerica (epoch) no esta soportada", "origen": "PROPUESTA DE LA IA" },
+    { "regla": "Mapeo de estados segun la lista 'mapeo_estados' (sin distinguir mayusculas)", "origen": "PROPUESTA DE LA IA" },
+    { "regla": "Un id repetido dentro de la misma fuente: el segundo registro es invalido", "origen": "PROPUESTA DE LA IA" },
+    { "regla": "Metricas: el total por moneda incluye todas las validas y ademas se informa el monto confirmado (solo SUCCESS)", "origen": "PROPUESTA DE LA IA" }
+  ]
+}

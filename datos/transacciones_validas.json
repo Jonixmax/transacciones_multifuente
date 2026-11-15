@@ -1,0 +1,83 @@
+[
+  {
+    "id": "tx_001",
+    "amount": "100.50",
+    "currency": "USD",
+    "timestamp": "2025-03-10 14:22:00",
+    "status": "completed"
+  },
+  {
+    "id": "tx_002",
+    "amount": "250.00",
+    "currency": "usd",
+    "timestamp": "2025-03-11 09:15:30",
+    "status": "pending"
+  },
+  {
+    "id": "tx_003",
+    "amount": "75.25",
+    "currency": "EUR",
+    "timestamp": "2025-03-12T08:00:00Z",
+    "status": "failed"
+  },
+  {
+    "id": "tx_004",
+    "amount": "1200.00",
+    "currency": "USD",
+    "timestamp": "2025-03-13 17:45:00",
+    "status": "success"
+  },
+  {
+    "id": "tx_005",
+    "amount": "19.99",
+    "currency": "GBP",
+    "timestamp": "2025-03-14 10:00:00",
+    "status": "completed"
+  },
+  {
+    "transaction_id": 204,
+    "total": 10050,
+    "currency_code": "usd",
+    "created_at": "10/03/2025 14:22",
+    "state": "OK"
+  },
+  {
+    "transaction_id": 205,
+    "total": 2599,
+    "currency_code": "eur",
+    "created_at": "11/03/2025 09:30",
+    "state": "PENDING"
+  },
+  {
+    "transaction_id": 206,
+    "total": 500000,
+    "currency_code": "usd",
+    "created_at": "12/03/2025 23:59",
+    "state": "ERROR"
+  },
+  {
+    "transaction_id": 207,
+    "total": 1999,
+    "currency_code": "gbp",
+    "created_at": "13/03/2025 12:00",
+    "state": "approved"
+  },
+  {
+    "ref": "A-77",
+    "amount": "€99,99",
+    "date": "2025-03-10T14:22:00Z",
+    "result": "success"
+  },
+  {
+    "ref": "A-78",
+    "amount": "$1,234.56",
+    "date": "2025-03-11T10:00:00+02:00",
+    "result": "processing"
+  },
+  {
+    "ref": "A-79",
+    "amount": "£45,00",
+    "date": "2025-03-12T00:00:00Z",
+    "result": "declined"
+  }
+]
